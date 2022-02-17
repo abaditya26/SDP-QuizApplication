@@ -177,7 +177,7 @@ class DatabaseMethods {
       "quizId": quiz.quizId,
       "quizName": quiz.quizName,
     });
-    questions.forEach((question) {
+    for (var question in questions) {
       bool isCorrect = question.selected.compareTo(question.answer) == 0;
       firestore
           .collection("users")
@@ -192,7 +192,7 @@ class DatabaseMethods {
         "selected": question.selected,
         "correct": isCorrect,
       });
-    });
+    }
   }
 
   Future<QuerySnapshot<Object?>> getAttemptedQuizzes(String uid) async {

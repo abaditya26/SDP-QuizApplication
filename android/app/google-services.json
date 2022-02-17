@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "455285551023",
+    "project_id": "sdp-quizapp",
+    "storage_bucket": "sdp-quizapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455285551023:android:b92e5543ab3e24603d895a",
+        "android_client_info": {
+          "package_name": "ml.adityabodhankar.sdp_quiz_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455285551023-51vn2soua8cuiqp4motren6jmlcmf4cd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ml.adityabodhankar.sdp_quiz_app",
+            "certificate_hash": "c6008fbefe52ddcb3161a998306e5cca03b9843a"
+          }
+        },
+        {
+          "client_id": "455285551023-kfruibvalkr8r8vkk5vvqgn0isi0qkdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUIVoP6PtyC0nFO1Paw-KPrvu6kevoQt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455285551023-kfruibvalkr8r8vkk5vvqgn0isi0qkdk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

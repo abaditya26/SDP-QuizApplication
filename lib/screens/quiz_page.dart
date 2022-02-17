@@ -79,15 +79,15 @@ class _QuizPageState extends State<QuizPage> {
       },
       child: Container(
         alignment: Alignment.center,
-        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
-        decoration: BoxDecoration(
+        margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+        decoration: const BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
         ),
       ),
@@ -141,7 +141,7 @@ class _QuizPageState extends State<QuizPage> {
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width > 1200
                           ? 1200
-                          : MediaQuery.of(context).size.width,
+                          : MediaQuery.of(context).size.width-20,
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
@@ -178,7 +178,7 @@ class _QuizPageState extends State<QuizPage> {
                             ),
                             Container(
                               margin: EdgeInsets.all(15.0),
-                              width: MediaQuery.of(context).size.width,
+                              width: MediaQuery.of(context).size.width - 30.0,
                               padding: EdgeInsets.all(10.0),
                               decoration: BoxDecoration(
                                 color: Colors.white,

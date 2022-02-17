@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sdp_quiz_app/models/quiz_model.dart';
+import 'package:sdp_quiz_app/models/score_question_model.dart';
 import 'package:sdp_quiz_app/models/user_questions.dart';
 
 class QuizScoreScreen extends StatefulWidget {
@@ -19,11 +20,11 @@ class _QuizScoreScreenState extends State<QuizScoreScreen> {
 
   calculateScore() {
     total = widget.questions.length;
-    widget.questions.forEach((que) {
+    for (var que in widget.questions) {
       if (que.answer.compareTo(que.selected) == 0) {
         scored++;
       }
-    });
+    }
   }
 
   @override
@@ -75,9 +76,6 @@ class _QuizScoreScreenState extends State<QuizScoreScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                      SizedBox(
-                        height: 100.0,
-                      ),
                       Text(
                         widget.quiz.quizName,
                         style:
@@ -91,9 +89,14 @@ class _QuizScoreScreenState extends State<QuizScoreScreen> {
                         style:
                             TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
-                        height: 100.0,
-                      )
+                          Expanded(
+                            child: ListView.builder(itemBuilder: (context, index){
+                              UserQuestionsModel uQue = widget.questions[index];
+                              ScoreQuestionModel que = ScoreQuestionModel(answer: uQue.answer,
+                                  question: uQue.question, selected: uQue.selected, correct: uQue.answer==uQue.selected);
+                              return _Question(que:que, index:index);
+                            }, itemCount: widget.questions.length,),
+                          ),
 
                         ],
                       ),
@@ -102,7 +105,7 @@ class _QuizScoreScreenState extends State<QuizScoreScreen> {
                 ),
               ),
               if(isDesktop)
-                Spacer(),
+                const Spacer(),
             ],
           ),
         ),
@@ -110,3 +113,37 @@ class _QuizScoreScreenState extends State<QuizScoreScreen> {
     );
   }
 }
+
+
+class _Question extends StatelessWidget {
+  final ScoreQuestionModel que;
+  final int index;
+
+  const _Question({Key? key, required this.que, required this.index}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      padding: EdgeInsets.all(5.0),
+      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      height: 150.0,
+      decoration: BoxDecoration(
+        color: que.correct ? Color(0X4C00FF00) :Color(0x4CFF0000),
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Column(
+        children: [
+          Spacer(),
+          Text(que.question,style: TextStyle(fontSize: 20.0),),
+          if(!que.correct)
+            Text(que.selected, textAlign: TextAlign.center, style: TextStyle(color: Color(0xFF650000)),),
+          Text("Ans :- ${que.answer}", textAlign: TextAlign.center,),
+          Spacer(),
+        ],
+      ),
+    );
+  }
+}
+
+

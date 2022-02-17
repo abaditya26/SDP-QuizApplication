@@ -8,10 +8,12 @@ import 'services/data.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -38,14 +40,14 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Colors.white,
       ),
       home: isLoading
-          ? Scaffold(
+          ? const Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
         ),
       )
           : isLogin
-          ? DashboardScreen()
-          : HomePage(),
+          ? const DashboardScreen()
+          : const HomePage(),
     );
   }
 }
